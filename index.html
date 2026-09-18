@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josendra Giraldo — Creative Developer</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #0b0506;
+            color: #f8fafc;
+        }
+
+        .heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(255,90,90,.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,90,90,.055) 1px, transparent 1px);
+            background-size: 42px 42px;
+        }
+
+        .glow {
+            box-shadow: 0 0 80px rgba(220, 38, 38, .18);
+        }
+
+        .glass {
+            background: rgba(28, 10, 12, .72);
+            border: 1px solid rgba(239,68,68,.18);
+            backdrop-filter: blur(18px);
+        }
+
+        .blue-gradient {
+            background: linear-gradient(135deg, #7f1d1d, #dc2626, #450a0a);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #ef4444, #991b1b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: .7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="grid-bg">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50">
+        <nav class="max-w-6xl mx-auto px-6 py-5">
+            <div class="glass rounded-2xl px-6 py-4 flex items-center justify-between">
+
+                <a href="#home" class="heading text-xl font-bold">
+                    <span class="text-gradient">G</span>iraldo<span class="text-red-500">.</span>
+                </a>
+
+                <div class="hidden md:flex gap-8 text-sm text-slate-300">
+                    <a href="#home" class="hover:text-red-500 transition">Home</a>
+                    <a href="#about" class="hover:text-red-500 transition">About</a>
+                    <a href="#skill" class="hover:text-red-500 transition">Skill</a>
+                    <a href="#project" class="hover:text-red-500 transition">Project</a>
+                    <a href="#contact" class="hover:text-red-500 transition">Contact</a>
+                </div>
+
+                <a href="setengahbola.html"
+                   class="hidden sm:block blue-gradient px-5 py-2.5 rounded-xl text-sm font-bold">
+                    Tugas JS
+                </a>
+
+                <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+            </div>
+
+            <div id="mobileMenu" class="hidden glass rounded-2xl mt-2 p-5 md:hidden">
+                <div class="flex flex-col gap-4 text-slate-200">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skill">Skill</a>
+                    <a href="#project">Project</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+    <section id="home" class="min-h-screen pt-32 flex items-center">
+        <div class="max-w-6xl mx-auto px-6 w-full">
+
+            <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-14 items-center">
+
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-slate-300 mb-7">
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                        Available for collaboration
+                    </div>
+
+                    <p class="text-red-500 font-semibold mb-3">
+                        HELLO, I'M
+                    </p>
+
+                    <h1 class="heading text-6xl sm:text-7xl md:text-8xl font-bold leading-[.9]">
+                        Josendra
+                        <span class="block text-gradient">Giraldo</span>
+                    </h1>
+
+                    <h2 class="heading text-2xl md:text-3xl text-slate-200 mt-7">
+                        Web Developer
+                    </h2>
+
+                    <p class="text-slate-400 max-w-xl text-lg leading-relaxed mt-5">
+                        Mahasiswa Teknologi Rekayasa Perangkat Lunak
+                        di Universitas Pendidikan Ganesha yang tertarik
+                        pada programming, dan teknologi.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <a href="#project"
+                           class="blue-gradient px-6 py-3.5 rounded-xl font-bold hover:scale-105 transition">
+                            Explore Projects →
+                        </a>
+
+                        <a href="#about"
+                           class="glass px-6 py-3.5 rounded-xl font-bold hover:bg-white/10 transition">
+                            More About Me
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- PROFILE CARD -->
+                <div class="reveal flex justify-center lg:justify-end">
+                    <div class="relative w-[320px] sm:w-[370px]">
+
+                        <div class="absolute -inset-8 bg-red-600/10 blur-3xl rounded-full"></div>
+
+                        <div class="glass glow rounded-[32px] p-4 relative rotate-2 hover:rotate-0 transition duration-500">
+                            <div class="rounded-[24px] overflow-hidden aspect-[4/5]">
+                                <img src="assets/Josendra.jpeg"
+                                     alt="Josendra Giraldo"
+                                     class="w-full h-full object-cover">
+                            </div>
+
+                            <div class="flex items-center justify-between p-4">
+                                <div>
+                                    <p class="text-xs text-slate-500">BASED IN</p>
+                                    <p class="font-semibold">Bali, Indonesia</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-slate-500">FOCUS</p>
+                                    <p class="font-semibold text-red-500">Web Dev</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mini stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-20 reveal">
+                <div class="glass rounded-2xl p-5">
+                    <p class="text-3xl font-bold heading">04+</p>
+                    <p class="text-slate-500 text-sm mt-1">Tech Skills</p>
+                </div>
+                <div class="glass rounded-2xl p-5">
+                    <p class="text-3xl font-bold heading">02</p>
+                    <p class="text-slate-500 text-sm mt-1">Projects</p>
+                </div>
+                <div class="glass rounded-2xl p-5">
+                    <p class="text-3xl font-bold heading">01</p>
+                    <p class="text-slate-500 text-sm mt-1">Developer</p>
+                </div>
+                <div class="glass rounded-2xl p-5">
+                    <p class="text-3xl font-bold heading">∞</p>
+                    <p class="text-slate-500 text-sm mt-1">Things to Learn</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="py-28">
+        <div class="max-w-6xl mx-auto px-6">
+
+            <div class="reveal mb-12">
+                <p class="text-red-500 font-bold text-sm tracking-widest">01 / ABOUT</p>
+                <h2 class="heading text-4xl md:text-6xl font-bold mt-3">
+                    A little bit <span class="text-gradient">about me.</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="md:col-span-2 glass rounded-3xl p-8 md:p-10 reveal">
+                    <p class="text-xl md:text-2xl leading-relaxed text-slate-200">
+                        Saya adalah mahasiswa D4 yang sedang membangun
+                        kemampuan di dunia teknologi dan software development.
+                    </p>
+
+                    <p class="text-slate-400 leading-relaxed mt-6">
+                        Saya menikmati proses membuat sesuatu dari dan merancangnya
+                        hingga menjadi sebuah produk yang saya banggakan.
+                    </p>
+                </div>
+
+                <div class="glass rounded-3xl p-8 reveal">
+                    <p class="text-slate-500 text-sm">EDUCATION</p>
+                    <h3 class="heading text-xl font-bold mt-3">
+                        Universitas Pendidikan Ganesha
+                    </h3>
+                    <p class="text-red-500 mt-2">
+                        Teknologi Rekayasa Perangkat Lunak
+                    </p>
+
+                    <div class="h-px bg-white/10 my-7"></div>
+
+                    <p class="text-slate-500 text-sm">INTERESTS</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="bg-white/5 px-3 py-1.5 rounded-lg text-sm">Web</span>
+                        <span class="bg-white/5 px-3 py-1.5 rounded-lg text-sm">Coding</span>
+                        <span class="bg-white/5 px-3 py-1.5 rounded-lg text-sm">UI</span>
+                        <span class="bg-white/5 px-3 py-1.5 rounded-lg text-sm">Network</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skill" class="py-28 bg-black/45">
+        <div class="max-w-6xl mx-auto px-6">
+
+            <div class="reveal mb-12">
+                <p class="text-red-500 font-bold text-sm tracking-widest">02 / SKILLS</p>
+                <h2 class="heading text-4xl md:text-6xl font-bold mt-3">
+                    My <span class="text-gradient">toolbox.</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+
+                <div class="glass rounded-3xl p-7 reveal">
+                    <div class="flex justify-between">
+                        <h3 class="heading text-xl font-bold">HTML / CSS</h3>
+                        <span class="text-red-500">20%</span>
+                    </div>
+                    <div class="h-2 bg-red-950/70 rounded-full mt-5 overflow-hidden">
+                        <div class="blue-gradient h-full w-[20%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-7 reveal">
+                    <div class="flex justify-between">
+                        <h3 class="heading text-xl font-bold">Tailwind CSS</h3>
+                        <span class="text-red-500">10%</span>
+                    </div>
+                    <div class="h-2 bg-red-950/70 rounded-full mt-5 overflow-hidden">
+                        <div class="blue-gradient h-full w-[10%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-7 reveal">
+                    <div class="flex justify-between">
+                        <h3 class="heading text-xl font-bold">JavaScript</h3>
+                        <span class="text-red-500">20%</span>
+                    </div>
+                    <div class="h-2 bg-red-950/70 rounded-full mt-5 overflow-hidden">
+                        <div class="blue-gradient h-full w-[20%] rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-7 reveal">
+                    <div class="flex justify-between">
+                        <h3 class="heading text-xl font-bold">C++ / Java / Python</h3>
+                        <span class="text-red-500">20%</span>
+                    </div>
+                    <div class="h-2 bg-red-950/70 rounded-full mt-5 overflow-hidden">
+                        <div class="blue-gradient h-full w-[20%] rounded-full"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="project" class="py-28">
+        <div class="max-w-6xl mx-auto px-6">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 reveal">
+                <div>
+                    <p class="text-red-500 font-bold text-sm tracking-widest">03 / PROJECTS</p>
+                    <h2 class="heading text-4xl md:text-6xl font-bold mt-3">
+                        Selected <span class="text-gradient">work.</span>
+                    </h2>
+                </div>
+
+                <p class="text-slate-500 max-w-sm">
+                    Beberapa project yang pernah saya kerjakan
+                    selama belajar dan mengembangkan kemampuan.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+
+                <article class="glass rounded-3xl overflow-hidden group reveal">
+                    <div class="h-56 bg-gradient-to-br from-red-700/25 to-black/30 flex items-center justify-center">
+                        <span class="heading text-6xl font-bold text-red-500 group-hover:scale-110 transition">GAEKU</span>
+                    </div>
+                    <div class="p-7">
+                        <p class="text-red-500 text-xs font-bold tracking-widest">WEB SYSTEM</p>
+                        <h3 class="heading text-2xl font-bold mt-2">GAEKU</h3>
+                        <p class="text-slate-400 mt-3 leading-relaxed">
+                            Sistem informasi lowongan pekerjaan yang berfokus
+                            pada informasi pekerjaan di Buleleng.
+                        </p>
+                        <div class="flex gap-2 mt-5">
+                            <span class="bg-white/5 rounded-lg px-3 py-1 text-xs">HTML</span>
+                            <span class="bg-white/5 rounded-lg px-3 py-1 text-xs">CSS</span>
+                            <span class="bg-white/5 rounded-lg px-3 py-1 text-xs">JS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="glass rounded-3xl overflow-hidden group reveal">
+                    <div class="h-56 bg-gradient-to-br from-red-800/25 to-black/30 flex items-center justify-center">
+                        <span class="heading text-6xl font-bold text-red-400 group-hover:scale-110 transition">POS</span>
+                    </div>
+                    <div class="p-7">
+                        <p class="text-red-400 text-xs font-bold tracking-widest">C++ / OOP</p>
+                        <h3 class="heading text-2xl font-bold mt-2">POS Laundry</h3>
+                        <p class="text-slate-400 mt-3 leading-relaxed">
+                            Program kasir laundry sederhana dengan konsep
+                            object-oriented programming.
+                        </p>
+                        <div class="flex gap-2 mt-5">
+                            <span class="bg-white/5 rounded-lg px-3 py-1 text-xs">C++</span>
+                            <span class="bg-white/5 rounded-lg px-3 py-1 text-xs">OOP</span>
+                        </div>
+                    </div>
+                </article>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-28">
+        <div class="max-w-6xl mx-auto px-6">
+
+            <div class="blue-gradient rounded-[32px] p-8 md:p-14 reveal">
+                <p class="text-white/70 font-bold text-sm tracking-widest">04 / CONTACT</p>
+
+                <div class="grid md:grid-cols-2 gap-12 mt-5 items-end">
+                    <div>
+                        <h2 class="heading text-5xl md:text-7xl font-bold leading-none">
+                            Mari yuk<br>Berbicara
+                        </h2>
+                        <p class="mt-6 text-white/80 text-lg max-w-lg">
+                            Terbuka untuk berdiskusi, belajar bersama,
+                            atau berkolaborasi dalam project.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <a href="mailto:josendra.sitepu@gmail.com"
+                           class="block bg-black/80 hover:bg-black rounded-2xl px-6 py-5 font-bold transition">
+                            ✉ josendra.sitepu@gmail.com
+                        </a>
+                        <a href="tel:+6289520269486"
+                           class="block bg-black/80 hover:bg-black rounded-2xl px-6 py-5 font-bold transition">
+                            ◎ +62 895 2026 9486
+                        </a>
+                        <a href="https://www.linkedin.com/in/josendra-giraldo-b00698377/?trk=PROFILE_DROP_DOWN"
+                           class="block bg-black/80 hover:bg-black rounded-2xl px-6 py-5 font-bold transition">
+                            ◇ Linkedin
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 py-8">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between gap-3 text-sm">
+            <p class="font-bold">Josendra Giraldo<span class="text-red-500">.</span></p>
+            <p class="text-slate-500">© 2026 Josendra Giraldo</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        document.querySelectorAll("#mobileMenu a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

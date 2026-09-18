@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalkulator Setengah Bola — Giraldo.</title>
+  <style>
+    :root{
+      --bg:#080405;
+      --panel:#14080a;
+      --panel2:#19090c;
+      --line:#3d1116;
+      --line-soft:rgba(184,34,43,.20);
+      --red:#ed2e35;
+      --red2:#b71920;
+      --white:#f7f4f4;
+      --muted:#9c9aa0;
+      --blue:#8fb8df;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--white);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        linear-gradient(rgba(115,23,29,.18) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(115,23,29,.18) 1px,transparent 1px),
+        radial-gradient(circle at 70% 48%,rgba(167,24,33,.13),transparent 27%),
+        var(--bg);
+      background-size:40px 40px,40px 40px,100% 100%,auto;
+    }
+    .container{width:min(1036px,calc(100% - 36px));margin:auto}
+    header{
+      margin-top:22px;
+      height:70px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(22,7,9,.90);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 23px;
+      position:sticky;
+      top:14px;
+      z-index:10;
+      backdrop-filter:blur(12px);
+    }
+    .brand{font-size:18px;font-weight:800;letter-spacing:-.5px}
+    .brand span{color:var(--red)}
+    nav{display:flex;gap:31px}
+    nav a{color:#d1cdd0;text-decoration:none;font-size:13px;font-weight:600}
+    nav a:hover{color:#fff}
+    .talk{
+      border:0;color:white;background:linear-gradient(135deg,var(--red),#99141b);
+      border-radius:11px;padding:12px 20px;font-weight:800;cursor:pointer;
+      box-shadow:0 8px 25px rgba(237,46,53,.16)
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:42px;
+      align-items:center;
+      padding:78px 0 48px;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;
+      border:1px solid #55151b;border-radius:999px;padding:9px 15px;
+      font-size:12px;color:#ddd;margin-bottom:25px;background:rgba(25,7,9,.65)
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red)}
+    h1{font-size:clamp(48px,7vw,78px);line-height:.94;margin:0 0 25px;letter-spacing:-4px}
+    h1 .accent{color:var(--red)}
+    .subtitle{font-size:27px;margin:0 0 16px;font-weight:500}
+    .desc{max-width:590px;color:var(--blue);line-height:1.7;font-size:15px;margin-bottom:28px}
+    .buttons{display:flex;gap:14px;flex-wrap:wrap}
+    button,.button{
+      font:inherit
+    }
+    .primary,.secondary{
+      border-radius:11px;padding:14px 21px;font-weight:800;cursor:pointer;text-decoration:none;
+      transition:.2s transform,.2s box-shadow;
+    }
+    .primary{border:1px solid #c82128;color:#fff;background:linear-gradient(135deg,#ee3037,#b71920)}
+    .secondary{border:1px solid #51151b;background:rgba(26,8,10,.8);color:#eee}
+    .primary:hover,.secondary:hover,.talk:hover{transform:translateY(-2px)}
+
+    .calculator{
+      position:relative;
+      border:1px solid #57171d;
+      background:linear-gradient(160deg,rgba(30,8,11,.96),rgba(16,5,7,.97));
+      border-radius:27px;
+      padding:27px;
+      min-height:410px;
+      box-shadow:0 25px 80px rgba(174,23,31,.13);
+      overflow:hidden;
+    }
+    .calculator:before{
+      content:"";
+      position:absolute;width:180px;height:180px;border-radius:50%;
+      right:-65px;top:-70px;background:rgba(237,46,53,.11);filter:blur(12px)
+    }
+    .calc-title{font-size:14px;color:#aaa;margin-bottom:4px}
+    .calc-heading{font-size:27px;margin:0 0 24px}
+    label{display:block;font-size:12px;color:#aaa;margin-bottom:8px}
+    .input-wrap{position:relative}
+    input{
+      width:100%;border:1px solid #4c141a;border-radius:11px;
+      background:#0c0506;color:white;padding:15px 72px 15px 15px;
+      outline:none;font-size:16px;
+    }
+    input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(237,46,53,.08)}
+    .unit{position:absolute;right:15px;top:50%;transform:translateY(-50%);color:#777;font-size:13px}
+    .results{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+    .result{
+      border:1px solid #3c1116;background:rgba(9,4,5,.6);border-radius:12px;padding:14px
+    }
+    .result small{display:block;color:#777;font-size:11px;margin-bottom:6px}
+    .result strong{font-size:17px}
+    .formula{margin-top:16px;color:#777;font-size:11px;line-height:1.5}
+    .calc-actions{display:flex;gap:9px;margin-top:18px}
+    .calc-actions button{flex:1;border-radius:10px;padding:12px;border:1px solid #4b141a;cursor:pointer;font-weight:700}
+    .calculate{background:var(--red);color:#fff}
+    .reset{background:#17080a;color:#ddd}
+
+    .stats{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:11px;padding-bottom:70px
+    }
+    .stat{
+      border:1px solid #421218;background:rgba(21,7,9,.85);border-radius:14px;padding:20px
+    }
+    .stat b{font-size:28px;display:block;margin-bottom:7px}
+    .stat span{color:#777;font-size:12px}
+
+    section.info{padding:5px 0 80px}
+    .section-label{color:var(--red);font-size:12px;font-weight:800;letter-spacing:1px}
+    h2{font-size:34px;letter-spacing:-1px;margin:9px 0 12px}
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+    .card{border:1px solid #421218;background:rgba(20,7,9,.75);border-radius:16px;padding:22px}
+    .card h3{margin:0 0 9px;font-size:16px}
+    .card p{margin:0;color:#8d8a8d;font-size:13px;line-height:1.65}
+    footer{border-top:1px solid #291014;padding:25px 0;color:#666;font-size:12px}
+
+    @media(max-width:850px){
+      nav{display:none}
+      .hero{grid-template-columns:1fr;padding-top:55px}
+      .calculator{max-width:600px}
+      .stats{grid-template-columns:1fr 1fr}
+      .info-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:500px){
+      .container{width:min(100% - 24px,1036px)}
+      header{height:62px;padding:0 15px}
+      .talk{padding:10px 13px}
+      h1{letter-spacing:-2.5px}
+      .subtitle{font-size:23px}
+      .results{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand"><span>G</span>iraldo.</div>
+      <nav>
+        <a href="#calculator">Kalkulator</a>
+        <a href="#rumus">Rumus</a>
+      </nav>
+      <a class="talk" href="index.html">Kembali ke Portofolio</a>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Tugas JS</div>
+          <h1>Setengah<br><span class="accent">Bola</span></h1>
+          <p class="desc">
+            Masukkan jari-jari setengah bola untuk menghitung volume,
+            luas permukaan lengkung, luas permukaan total, dan diameter
+            secara otomatis.
+          </p>
+          <div class="buttons">
+          </div>
+        </div>
+
+        <div class="calculator" id="calculator">
+          <div class="calc-title">CALCULATOR</div>
+          <h2 class="calc-heading">Kalkulator Setengah Bola</h2>
+
+          <label for="radius">Jari-jari (r)</label>
+          <div class="input-wrap">
+            <input id="radius" type="number" min="0" step="any" placeholder="Contoh: 10" />
+            <span class="unit">cm</span>
+          </div>
+
+          <div class="results">
+            <div class="result">
+              <small>VOLUME</small>
+              <strong id="volume">— cm³</strong>
+            </div>
+            <div class="result">
+              <small>LUAS LENGKUNG</small>
+              <strong id="curved">— cm²</strong>
+            </div>
+            <div class="result">
+              <small>LUAS TOTAL</small>
+              <strong id="total">— cm²</strong>
+            </div>
+            <div class="result">
+              <small>DIAMETER</small>
+              <strong id="diameter">— cm</strong>
+            </div>
+          </div>
+
+          <div class="calc-actions">
+            <button class="calculate" onclick="calculate()">Hitung</button>
+            <button class="reset" onclick="resetCalc()">Reset</button>
+          </div>
+          <div class="formula">Gunakan π = 3,14159265359. Satuan hasil mengikuti satuan jari-jari yang dimasukkan.</div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Ringkasan">
+        <div class="stat"><b>01</b><span>Input Jari-jari</span></div>
+        <div class="stat"><b>04</b><span>Hasil Perhitungan</span></div>
+        <div class="stat"><b>π</b><span>Nilai Pi Presisi</span></div>
+        <div class="stat"><b>∞</b><span>Bisa Digunakan Ulang</span></div>
+      </section>
+
+      <section class="info" id="rumus">
+        <div class="section-label">FORMULA</div>
+        <h2>Rumus Setengah Bola</h2>
+        <p class="desc">Tiga perhitungan utama yang digunakan pada kalkulator ini.</p>
+        <div class="info-grid">
+          <div class="card">
+            <h3>Volume</h3>
+            <p>V = ⅔ × π × r³. Volume menunjukkan kapasitas ruang di dalam setengah bola.</p>
+          </div>
+          <div class="card">
+            <h3>Luas Permukaan Lengkung</h3>
+            <p>L = 2 × π × r². Perhitungan ini hanya mencakup bagian permukaan yang melengkung.</p>
+          </div>
+          <div class="card">
+            <h3>Luas Permukaan Total</h3>
+            <p>L<sub>total</sub> = 3 × π × r². Hasil ini mencakup permukaan lengkung dan alas lingkaran.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>© 2026 Giraldo. Half-Sphere Calculator.</footer>
+  </div>
+
+  <script>
+    const radius = document.getElementById("radius");
+
+    function formatNumber(value){
+      return new Intl.NumberFormat("id-ID", {
+        maximumFractionDigits: 6
+      }).format(value);
+    }
+
+    function calculate(){
+      const r = parseFloat(radius.value);
+      if (!Number.isFinite(r) || r <= 0){
+        radius.focus();
+        radius.style.borderColor = "#ed2e35";
+        return;
+      }
+
+      const pi = Math.PI;
+      const volume = (2 / 3) * pi * Math.pow(r, 3);
+      const curved = 2 * pi * Math.pow(r, 2);
+      const total = 3 * pi * Math.pow(r, 2);
+      const diameter = 2 * r;
+
+      document.getElementById("volume").textContent = formatNumber(volume) + " cm³";
+      document.getElementById("curved").textContent = formatNumber(curved) + " cm²";
+      document.getElementById("total").textContent = formatNumber(total) + " cm²";
+      document.getElementById("diameter").textContent = formatNumber(diameter) + " cm";
+      radius.style.borderColor = "";
+    }
+
+    function resetCalc(){
+      radius.value = "";
+      document.getElementById("volume").textContent = "— cm³";
+      document.getElementById("curved").textContent = "— cm²";
+      document.getElementById("total").textContent = "— cm²";
+      document.getElementById("diameter").textContent = "— cm";
+      radius.style.borderColor = "";
+      radius.focus();
+    }
+
+    radius.addEventListener("keydown", e => {
+      if(e.key === "Enter") calculate();
+    });
+  </script>
+</body>
+</html>
